@@ -1,11 +1,16 @@
-﻿using System;
+﻿using prmToolkit.NotificationPattern;
+using prmToolkit.NotificationPattern.Extensions;
+using System;
 using XGame.Domain.Arguments.Jogador;
+using XGame.Domain.Entities;
 using XGame.Domain.Interfaces.Repositories;
 using XGame.Domain.Interfaces.Services;
+using XGame.Domain.Resources;
+using XGame.Domain.ValueObjects;
 
 namespace XGame.Domain.Services
 {
-    public class ServiceJogador : IServiceJogador
+    public class ServiceJogador : Notifiable, IServiceJogador
     {
         private readonly IRepositoryJogador _repositoryJogador;
 
@@ -30,36 +35,19 @@ namespace XGame.Domain.Services
         {
             if (request == null)
             {
-                throw new Exception("AutenticarJogadorRequest Obrigatório!");
+                AddNotification("AutenticarJogadorRequest", Message.X0_E_OBRIGATORIO.ToFormat("AutenticarJogadorRequest"));
             }
+            var email = new Email(request.Email);
+            var jogador = new Jogador(email, request.Senha);
 
-            if (string.IsNullOrEmpty(request.Email))
+            AddNotifications(jogador);
+            if (jogador.IsInvalid())
             {
-                throw new Exception("Email é Obrigatório!");
-            }
-
-            if (IsEmail(request.Email))
-            {
-                throw new Exception("Email é Obrigatório!");
-            }
-
-            if (string.IsNullOrEmpty(request.Senha))
-            {
-                throw new Exception("Senha é Obrigatório!");
-            }
-
-            if (request.Senha.Length < 6)
-            {
-                throw new Exception("Complexidade da Senha não confere!");
+                return null;
             }
 
             var response = _repositoryJogador.AutenticarJogador(request);
             return response;
-        }
-
-        private bool IsEmail(string email)
-        {
-            return false;
         }
     }
 }
