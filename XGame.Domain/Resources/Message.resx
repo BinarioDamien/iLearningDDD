@@ -117,13 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="OPERACAO_REALIZADA_COM_SUCESSO" xml:space="preserve">
+    <value>Operação Realizada com Sucesso.</value>
+  </data>
   <data name="X0_E_INVALIDA" xml:space="preserve">
     <value>{0} é inválida.</value>
   </data>
   <data name="X0_E_INVALIDO" xml:space="preserve">
     <value>{0} inválido.</value>
   </data>
+  <data name="X0_E_NULO" xml:space="preserve">
+    <value>O campo {0} não pode ser nulo.</value>
+  </data>
+  <data name="X0_E_OBRIGATORIA_E_DEVE_CONTER_ENTRE_X1_E_X2_CARACTERES" xml:space="preserve">
+    <value>{0} é obrigatória e deve conter entre {1} e {2} caractéres.</value>
+  </data>
   <data name="X0_E_OBRIGATORIO" xml:space="preserve">
     <value>{0} obrigatório.</value>
+  </data>
+  <data name="X0_E_OBRIGATORIO_E_DEVE_CONTER_ENTRE_X1_E_X2_CARACTERES" xml:space="preserve">
+    <value>{0} é obrigatório e deve conter entre {1} e {2} caractéres.</value>
+  </data>
+  <data name="X0_E_OBRIGATORIO_E_DEVE_CONTER_X1_CARACTERES" xml:space="preserve">
+    <value>{0} é obrigatório e deve conter {1} caractéres.</value>
   </data>
 </root>
